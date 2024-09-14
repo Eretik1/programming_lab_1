@@ -1,4 +1,4 @@
-name: Build and Release
+name: 'C++ CI'
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
 
   build_macos:
     runs-on: macos-latest
-    needs: build  # Ensures this job runs after the build job completes
+    needs: build  
     steps:
       - uses: actions/checkout@v3
         with:
@@ -43,8 +43,8 @@ jobs:
           path: ./helloworld-0.0.${{ github.run_number }}-Darwin.zip
 
   create-release:
-    needs: [build, build_macos]  # This job runs after both build jobs have completed
-    runs-on: ubuntu-latest  # You can keep it on Ubuntu or choose a different environment
+    needs: [build, build_macos] 
+    runs-on: ubuntu-latest  
     steps:
       - name: Download Linux Asset
         uses: actions/download-artifact@v2
