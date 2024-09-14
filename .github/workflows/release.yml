@@ -19,7 +19,7 @@ jobs:
       - run: cmake --build . --target test
       - run: cmake --build . --target package
       - name: Upload Linux Asset
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v1
         with:
           name: linux-deb
           path: ./helloworld-0.0.${{ github.run_number }}-Linux.deb
@@ -37,7 +37,7 @@ jobs:
       - run: cmake --build . --target test
       - run: cmake --build . --target package
       - name: Upload macOS Asset
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v1
         with:
           name: macos-zip
           path: ./helloworld-0.0.${{ github.run_number }}-Darwin.zip
@@ -47,12 +47,12 @@ jobs:
     runs-on: ubuntu-latest  
     steps:
       - name: Download Linux Asset
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v1
         with:
           name: linux-deb
           path: ./artifacts
       - name: Download macOS Asset
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v1
         with:
           name: macos-zip
           path: ./artifacts
